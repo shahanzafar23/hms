@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="patientMedicalRecord">
+      <h2 data-cy="patientMedicalRecordDetailsHeading"><span>Patient Medical Record</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ patientMedicalRecord.id }}</span>
+        </dd>
+        <dt><span>Patient Condition</span></dt>
+        <dd>
+          <span>{{ patientMedicalRecord.patientCondition }}</span>
+        </dd>
+        <dt><span>Insurance Claimed</span></dt>
+        <dd>
+          <span>{{ patientMedicalRecord.insuranceClaimed }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/patient-medical-record', patientMedicalRecord.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "applications": "*",
+  "changelogDate": "20220506022731",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "patient_medical_record",
+  "fields": [
+    {
+      "fieldName": "patientCondition",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "insuranceClaimed",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "PatientMedicalRecord",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

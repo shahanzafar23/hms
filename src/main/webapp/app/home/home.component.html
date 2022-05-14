@@ -1,0 +1,100 @@
+<div class="row" *ngIf="account">
+  <div class="col-md-3" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+    <div class="card bg-light mb-3 text-center " style="max-width: 18rem;">
+      <div class="card-body">
+        <a [routerLink]="['/wallet', 'doctor']" style="text-decoration: none;">
+          <h1 class="card-title"><span><fa-icon icon="users"></fa-icon></span></h1>
+          <h2 class="card-test">&nbsp;Manage Doctors</h2>
+          <p class="card-text">Total Doctors&nbsp;&nbsp;<b>{{totalDoctors}}</b></p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+    <div class="card bg-light mb-3 text-center " style="max-width: 18rem;">
+      <div class="card-body">
+        <a [routerLink]="['/wallet', 'patient']" style="text-decoration: none;">
+          <h1 class="card-title"><span><fa-icon icon="users"></fa-icon></span></h1>
+          <h2 class="card-test">&nbsp;Manage Patients</h2>
+          <p class="card-text">Total Patients&nbsp;&nbsp;<b>{{totalPatients}}</b></p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+    <div class="card bg-light mb-3 text-center " style="max-width: 18rem;">
+      <div class="card-body">
+        <a [routerLink]="['/wallet', 'insurer']" style="text-decoration: none;">
+          <h1 class="card-title"><span><fa-icon icon="users"></fa-icon></span></h1>
+          <h2 class="card-test">&nbsp;Manage Insurers</h2>
+          <p class="card-text">Total Insurers&nbsp;&nbsp;<b>{{totalInsurer}}</b></p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+    <div class="card bg-light mb-3 text-center " style="max-width: 18rem;">
+      <div class="card-body">
+        <a [routerLink]="['/wallet', 'er']" style="text-decoration: none;">
+          <h1 class="card-title"><span><fa-icon icon="users"></fa-icon></span></h1>
+          <h2 class="card-test">&nbsp;Manage ERs</h2>
+          <p class="card-text">Total ERs&nbsp;&nbsp;<b>{{totalERs}}</b></p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3" *jhiHasAnyAuthority="['ROLE_DOCTOR', 'ROLE_ADMIN']">
+    <div class="card bg-light mb-3 text-center " style="max-width: 18rem;">
+      <div class="card-body">
+        <h1 class="card-title"><span><fa-icon icon="pencil-alt"></fa-icon></span></h1>
+        <h2 class="card-test">&nbsp;Appointments</h2>
+        <p class="card-text">Total appointments&nbsp;<small style="color: red;">N/A</small></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+    <div class="card bg-light mb-3 text-center " style="max-width: 18rem;">
+      <div class="card-body">
+        <a routerLink="admin/user-management" style="text-decoration: none;">
+          <h1 class="card-title"><span><fa-icon icon="users"></fa-icon></span></h1>
+          <h2 class="card-test">&nbsp;Manage Users</h2>
+          <p class="card-text">Total Users&nbsp;&nbsp;{{totalUsers}}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3" *jhiHasAnyAuthority="['ROLE_DOCTOR', 'ROLE_PATIENT', 'ROLE_INSURER', 'ROLE_ADMIN', 'ROLE_ER']">
+    <div class="card bg-light mb-3 text-center " style="max-width: 18rem;">
+      <div class="card-body">
+        <a [routerLink]="['/patient-medical-record']" style="text-decoration: none;">
+          <h1 class="card-title"><span><fa-icon icon="search"></fa-icon></span></h1>
+          <h2 class="card-test">&nbsp;Search Patient</h2>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">ETMEAN Hospital Management System With BlockChain</h5>
+        <p class="card-text">ETMEAN Hospital Management System is a safe and secure online portal that allows
+           you to view and manage patient medical records. The website will allow doctors and administrators
+            to manage patient medical records. The website is a user-friendly interface for efficiently
+             managing patient activities. This system is built on blockchain technology, which means that 
+             the data is highly secure and that a patient's medical history cannot be lost. 
+             The ETMEAN Hospital Management System has a limited number of functions,
+              yet they are practically all used on a regular basis in a hospital. Employees can 
+              access the blockchain network through ETMEAN, a web portal.
+        </p>
+        <a routerLink="/login"><p class="card-text" *ngIf="!account"><small>Please login with your 'username' and 'private key' to proceed</small></p></a>
+        <button class="btn btn-primary" [routerLink]="['/login']" *ngIf="!account">
+        <fa-icon icon="sign-in-alt"></fa-icon><span> Login </span></button>
+      </div>
+      <img class="card-img-bottom" src="../../content/images/bg.jpg" alt="Card image cap">
+    </div>
+  </div>
+</div>
+
+

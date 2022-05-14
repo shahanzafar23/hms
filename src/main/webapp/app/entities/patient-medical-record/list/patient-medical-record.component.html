@@ -1,0 +1,75 @@
+<div>
+  <h2 id="page-heading" data-cy="PatientMedicalRecordHeading">
+    <span>Patient Medical Records</span>
+
+    <div class="d-flex justify-content-end" *jhiHasAnyAuthority="['ROLE_DOCTOR', 'ROLE_INSURER', 'ROLE_ER']">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading" *ngIf="wallets && wallets.length > 0" >
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-patient-medical-record"
+        [routerLink]="['/patient-medical-record', wallets[0].id ,'new']"
+        *ngIf="wallets && wallets.length > 0"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Patient Medical Record</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="patientMedialHistory?.length === 0">
+    <span>No patientMedicalRecords found</span>
+  </div>
+
+  <form name="searchForm" role="form" novalidate [formGroup]="searchForm">
+    <div class="row justify-content-start">
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          name="search"
+          id="field_search"
+          data-cy="search"
+          formControlName="search"
+          placeholder="Please Enter Patient's Email or Login name"
+        />
+      </div>
+      <div class="col-4">
+        <button class="input-group-append btn btn-info" (click)="search()" [disabled]="isSearchDisabled()">
+          <fa-icon icon="search"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="table-responsive" id="entities" *ngIf="patientMedialHistory && patientMedialHistory.length > 0 && wallets && wallets.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>Patient Condition</span></th>
+          <th scope="col"><span>Insurance Claimed</span></th>
+          <th scope="col"><span>Update Date/Time</span></th>
+          <th scope="col"><span>Updated By wallet</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patientMedialHistoryRecord of patientMedialHistory" data-cy="entityTable">
+          <td>{{ patientMedialHistoryRecord.patientCondition }}</td>
+          <td>{{ patientMedialHistoryRecord.insuranceClaimed }}</td>
+          <td>{{ patientMedialHistoryRecord.timestamp }}</td>
+          <td>
+            <a [routerLink]="['/wallet', patientMedialHistoryRecord.updatedBy.id,'view']">{{ patientMedialHistoryRecord.updatedBy.id }}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

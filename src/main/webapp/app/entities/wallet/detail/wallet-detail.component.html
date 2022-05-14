@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="wallet">
+      <h2 data-cy="walletDetailsHeading"><span>Wallet</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ wallet.id }}</span>
+        </dd>
+        <dt><span>Street</span></dt>
+        <dd>
+          <span>{{ wallet.street }}</span>
+        </dd>
+        <dt><span>City</span></dt>
+        <dd>
+          <span>{{ wallet.city }}</span>
+        </dd>
+        <dt><span>State</span></dt>
+        <dd>
+          <span>{{ wallet.state }}</span>
+        </dd>
+        <dt><span>Country</span></dt>
+        <dd>
+          <span>{{ wallet.country }}</span>
+        </dd>
+        <dt><span>Post Code</span></dt>
+        <dd>
+          <span>{{ wallet.postCode }}</span>
+        </dd>
+        <dt><span>Age</span></dt>
+        <dd>
+          <span>{{ wallet.age }}</span>
+        </dd>
+        <dt><span>Phone</span></dt>
+        <dd>
+          <span>{{ wallet.phone }}</span>
+        </dd>
+        <dt *jhiHasAnyAuthority="['ROLE_ADMIN']"><span>Public Key</span></dt>
+        <dd *jhiHasAnyAuthority="['ROLE_ADMIN']">
+          <span>{{ wallet.publicKey }}</span>
+        </dd>
+        <dt *jhiHasAnyAuthority="['ROLE_ADMIN']"><span>Private Key</span></dt>
+        <dd *jhiHasAnyAuthority="['ROLE_ADMIN']">
+          <span>{{ wallet.privateKey }}</span>
+        </dd>
+        <dt *ngIf="wallet.hospitalName"><span>Hospital Name</span></dt>
+        <dd *ngIf="wallet.hospitalName">
+          <span>{{ wallet.hospitalName }}</span>
+        </dd>
+        <dt><span>User Id</span></dt>
+        <dd>
+          <span><a [routerLink]="['/admin/user-management', getUserName(wallet.userId), 'view']">{{ getUserName(wallet.userId) }}</a></span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/wallet', wallet.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

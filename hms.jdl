@@ -1,0 +1,17 @@
+entity Wallet {
+	street String
+    city String
+    state String
+    country String
+    postCode String
+    age Double
+    phone String
+    publicKey String
+    privateKey String
+    userId Long
+}
+
+entity PatientMedicalRecord {
+	patientCondition String
+    insuranceClaimed Boolean
+}
